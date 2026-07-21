@@ -8,11 +8,6 @@ import 'dialog_widgets.dart';
 // CLIENT INQUIRY dialog
 // ============================================================================
 
-/// Opens the Add/Edit Client Inquiry dialog. Pass [existing] to edit a row
-/// in place. [nextNo] (add mode only) is the next sequential "No." value,
-/// computed by the caller from the current list. [initialClientType] lets
-/// the two Quick Action buttons ("Add Walk In Client" / "Add Online
-/// Inquiry") pre-fill a sensible starting value.
 Future<void> showClientInquiryDialog(
   BuildContext context, {
   ClientInquiry? existing,
