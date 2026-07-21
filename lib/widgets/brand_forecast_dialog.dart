@@ -4,9 +4,6 @@ import '../models/sales_forecast.dart';
 import '../services/app_repositories.dart';
 import 'dialog_widgets.dart';
 
-/// Opens the Add/Edit Brand Forecast dialog. The brand name is used as the
-/// Firestore document id, so it's locked (not editable) once a forecast
-/// already exists for that brand — add a new one instead.
 Future<void> showBrandForecastDialog(
   BuildContext context, {
   BrandForecast? existing,
