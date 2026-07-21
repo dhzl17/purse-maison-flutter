@@ -22,8 +22,6 @@ class SalesOverviewChart extends StatelessWidget {
     final double maxValue = monthlyTotals.isEmpty
         ? 0
         : monthlyTotals.reduce((a, b) => a > b ? a : b);
-    // Round the axis ceiling up to a clean step above the highest month
-    // so the line never touches the top edge.
     final double maxY = maxValue <= 0 ? 10 : (maxValue * 1.2);
     final double interval = maxY / 5;
 
@@ -258,8 +256,6 @@ class MonthlyRevenueChart extends StatelessWidget {
 // CHART 3 — Inventory Performance (donut chart, live status breakdown)
 // ============================================================================
 class InventoryPerformanceChart extends StatelessWidget {
-  /// Counts keyed by display label, e.g. {'Available': 12, 'Reserved': 3,
-  /// 'Rejected': 1, 'Sold': 5}. Only non-zero entries are drawn.
   final Map<String, int> statusCounts;
 
   const InventoryPerformanceChart({super.key, required this.statusCounts});
@@ -376,13 +372,6 @@ class _LegendDot extends StatelessWidget {
 
 // ============================================================================
 // CHART 4 — Actual vs 6-Month Average (filled area/line chart)
-//
-// This used to be labeled "Actual vs Predicted" with 5 years of invented
-// numbers. A real forecast needs a proper time-series model and more
-// history than this app has yet — rather than fake one, this compares
-// actual monthly revenue against the flat average of those same months,
-// which is honest about what it actually is: a baseline, not a
-// prediction.
 // ============================================================================
 class ActualVsPredictedChart extends StatelessWidget {
   final List<double> monthlyTotals;
@@ -540,7 +529,7 @@ class _EmptyChartMessage extends StatelessWidget {
 }
 
 // ============================================================================
-// KEY INSIGHTS — outlined card with a short bullet-point summary.
+// KEY INSIGHTS 
 // ============================================================================
 class KeyInsightsCard extends StatelessWidget {
   final List<String> insights;
