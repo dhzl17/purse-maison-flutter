@@ -150,18 +150,13 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
     );
   }
 
-  /// Row of 4 headline KPI cards, computed live from the current
-  /// inventory snapshot. "Low Stock Items" isn't derivable from the
-  /// current schema (there's no per-item quantity/threshold field) — add
-  /// a `reorderThreshold`/`quantity` field to InventoryItem if you want a
-  /// real figure there; it's stubbed at 0 for now.
   Widget _buildKpiRow(bool isWide, List<InventoryItem> items) {
     final int total = items.length;
     final int available =
         items.where((i) => i.status == InventoryStatus.available).length;
     final int reserved =
         items.where((i) => i.status == InventoryStatus.reserved).length;
-    const int lowStock = 0; // see note above
+    const int lowStock = 0;
 
     final cards = <Widget>[
       StatCard(title: 'Total Items', value: '$total'),
@@ -191,9 +186,6 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
     );
   }
 
-  /// Inventory by Location (bar) + Inventory Turnover Rate (line) +
-  /// Slowest-Moving Items (leaderboard) — all computed from the live
-  /// inventory list plus real sales history.
   Widget _buildBottomRow(
     bool isWide,
     List<InventoryItem> items,
