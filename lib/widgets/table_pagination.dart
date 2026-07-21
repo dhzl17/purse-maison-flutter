@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
-/// Compact page-number control shown under a data table. Generic enough to
-/// reuse under any future paginated table — not tied to Inventory data.
 class TablePagination extends StatelessWidget {
   final int currentPage; // 1-based
   final int totalPages;
@@ -16,7 +14,6 @@ class TablePagination extends StatelessWidget {
     required this.onPageChanged,
   });
 
-  /// -1 is used as an "ellipsis" marker between page-number buttons.
   List<int> _visiblePages() {
     if (totalPages <= 5) {
       return List.generate(totalPages, (i) => i + 1);
