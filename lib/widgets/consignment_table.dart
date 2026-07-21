@@ -238,8 +238,6 @@ class _DataRow extends StatelessWidget {
   }
 }
 
-/// The "Details" column: an item photo plus the name / category / condition
-/// lines with bold labels.
 class _DetailsCell extends StatelessWidget {
   final ConsignmentItem item;
   const _DetailsCell({required this.item});
