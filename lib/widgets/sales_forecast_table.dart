@@ -22,8 +22,6 @@ const TextStyle _bodyStyleBold = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
-/// The brand forecast table on the Sales Forecasting page. Same responsive
-/// fixed-column pattern used by the other tables in this app.
 class ForecastTable extends StatelessWidget {
   final List<BrandForecast> items;
   final void Function(BrandForecast item)? onEdit;
