@@ -123,8 +123,6 @@ class _LandingPageState extends State<LandingPage>
 
   @override
   Widget build(BuildContext context) {
-    // Fade out the whole splash as it's dragged up, so it visually
-    // "leaves" the screen along with the swipe.
     final screenHeight = MediaQuery.of(context).size.height;
     final dragProgress = (-_dragOffset / screenHeight).clamp(0.0, 1.0);
 
