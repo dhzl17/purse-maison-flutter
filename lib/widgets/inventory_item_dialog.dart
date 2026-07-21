@@ -93,10 +93,6 @@ class _InventoryItemFormState extends State<_InventoryItemForm> {
         await AppRepositories.inventory.update(item.itemId, item);
       }
 
-      // Log a sale the moment an item flips to Sold — this is what feeds
-      // the Dashboard's Total Sales / Monthly Sales Growth cards. Doesn't
-      // fire again on later edits since it only triggers on the
-      // transition into Sold, not every save while already Sold.
       if (justSold) {
         await AppRepositories.salesTransactions.add(
           SalesTransaction(
@@ -116,8 +112,6 @@ class _InventoryItemFormState extends State<_InventoryItemForm> {
     }
   }
 
-  /// Strips currency symbols/commas from a price string like "₱720,000"
-  /// down to a plain number. Falls back to 0 if nothing parseable is found
   double _parsePriceToAmount(String price) {
     final digitsOnly = price.replaceAll(RegExp(r'[^0-9.]'), '');
     return double.tryParse(digitsOnly) ?? 0;
