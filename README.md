@@ -25,39 +25,39 @@ The Purse Maison Flutter Application aims to:
 
 ## Key Features
 
-### 📈 Main Dashboard
+### Main Dashboard
 
 * Display key performance indicators (KPIs).
 * Present sales and inventory insights through charts and visualizations.
 
-### 🔐 User Authentication
+### User Authentication
 
 * Secure user login and account management using Firebase Authentication.
 * Role-based access for different system users.
 
-### 📦 Inventory Management
+### Inventory Management
 
 * Add, update, view, and manage consigned luxury items.
 * Monitor item details, availability, and inventory status.
 
-### 🤝 Consignment Management
+### Consignment Management
 
 * Manage consignment item records.
 * Track item information throughout the consignment lifecycle.
 
-### 👥 Client Assignment Management
+### Client Assignment Management
 
 * Manage client information and assignments.
 * Monitor sales associate responsibilities.
 
-### 📊 Sales Forecasting Analytics
+### Sales Forecasting Analytics
 
 * Provide sales trend analysis and forecasting insights.
 * Support business planning using historical sales data.
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend
 
