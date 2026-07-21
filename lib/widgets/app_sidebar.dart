@@ -5,9 +5,6 @@ import '../routes/app_routes.dart';
 import '../screens/logout_page.dart';
 import '../theme/app_colors.dart';
 
-/// Dark navy navigation rail with logo, nav links, and a footer
-/// (Log Out / Help). Used both as a permanent rail (wide screens) and
-/// inside a Drawer (narrow screens) — see AppShell.
 class AppSidebar extends StatelessWidget {
   final int selectedIndex;
   final List<NavItemData> navItems;
@@ -85,7 +82,6 @@ class AppSidebar extends StatelessWidget {
     );
   }
 
-  /// Purse Maison brand mark used at the top of the navigation rail.
   Widget _buildLogo() {
     return SizedBox(
       width: 112,
@@ -99,7 +95,6 @@ class AppSidebar extends StatelessWidget {
   }
 }
 
-/// A single tappable row in the sidebar (nav link or footer action).
 class SidebarNavTile extends StatelessWidget {
   final IconData icon;
   final String label;
