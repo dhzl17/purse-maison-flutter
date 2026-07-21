@@ -6,9 +6,6 @@ import 'common_widgets.dart';
 
 // ============================================================================
 // PANEL 1 — Inventory by Location (horizontal bar chart, live counts)
-//
-// fl_chart's BarChart only draws vertical bars, so this is hand-built from
-// plain Containers rather than forced into fl_chart's API.
 // ============================================================================
 class InventoryByLocationChart extends StatelessWidget {
   /// Item count per location, in whatever order the caller wants shown —
@@ -122,12 +119,6 @@ class _BarRow extends StatelessWidget {
 
 // ============================================================================
 // PANEL 2 — Inventory Turnover Rate (line chart, last 6 months)
-//
-// Same simplified turnover proxy as the Dashboard's KPI card: share of
-// current inventory sold that month. A textbook turnover rate needs
-// cost-of-goods-sold and average inventory value over time, which this
-// schema doesn't track — this is "how much of what's on the shelf moved
-// each month" instead.
 // ============================================================================
 class InventoryTurnoverLineChart extends StatelessWidget {
   final List<double> turnoverPercentByMonth;
@@ -242,9 +233,6 @@ class InventoryTurnoverLineChart extends StatelessWidget {
 
 // ============================================================================
 // PANEL 3 — Slowest-Moving Items (leaderboard list with a "View" action)
-//
-// Items that took the longest to sell, computed from real sales history
-// (see TurnoverEntry below) — was a hardcoded top-4 list before.
 // ============================================================================
 class TurnoverLeaderboardCard extends StatelessWidget {
   final List<TurnoverEntry> entries;
