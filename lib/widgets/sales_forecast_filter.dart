@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import 'common_widgets.dart';
 
-/// The "Filter and Search" card: Period / Year / Brand dropdowns plus a
-/// "Generate Forecast" button. Keeps its own filter selections internally —
-/// the dummy chart/table data below it doesn't depend on these yet, so
-/// there's nothing else for the page itself to track.
 class FilterAndSearchCard extends StatefulWidget {
   final void Function(String period, String year, String brand)
   onGenerateForecast;
