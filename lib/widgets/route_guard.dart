@@ -8,12 +8,7 @@ import '../theme/app_colors.dart';
 /// Wraps a protected page. If nobody is logged in, redirects to /login.
 /// If someone is logged in but their role isn't allowed on this route,
 /// shows an "Access Denied" screen instead of the real page.
-///
-/// Usage in main.dart:
-///   AppRoutes.consignmentManagement: (context) => const RouteGuard(
-///         routeName: AppRoutes.consignmentManagement,
-///         child: ConsignmentManagementPage(),
-///       ),
+
 class RouteGuard extends StatelessWidget {
   final String routeName;
   final Widget child;
@@ -22,18 +17,12 @@ class RouteGuard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Listens to AppSession so this rebuilds the moment Firebase resolves
-    // the persisted auth state (cold start) or the user signs out from
-    // elsewhere in the app — not just right after a fresh login navigation.
     return AnimatedBuilder(
       animation: AppSession.instance,
       builder: (context, _) {
         final session = AppSession.instance;
 
         if (session.isInitializing) {
-          // Still resolving Firebase's persisted auth state on cold start —
-          // don't redirect yet, or a returning logged-in user briefly
-          // flashes the login page.
           return const _RedirectingScaffold();
         }
 
