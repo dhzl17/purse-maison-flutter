@@ -71,8 +71,6 @@ class _ConsignmentItemFormState extends State<_ConsignmentItemForm> {
       itemId: widget.existing?.itemId ?? widget.nextItemId ?? 'NEW',
       brand: _brand.text.trim(),
       itemName: _itemName.text.trim(),
-      // No image-upload flow yet — new items fall back to the same
-      // "not found" placeholder the table already handles gracefully.
       imagePath: widget.existing?.imagePath ?? 'assets/images/placeholder.png',
       category: _category.text.trim(),
       condition: _condition.text.trim(),
