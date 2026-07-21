@@ -8,11 +8,6 @@ import 'common_widgets.dart';
 
 // ============================================================================
 // CHART 1 — Sales Trend (Actual vs a simple 3-month-average projection)
-//
-// "Projected" here is a naive baseline (average of the last 3 real
-// months, held flat) rather than a trained forecasting model — this app
-// doesn't have enough sales history yet for anything more sophisticated.
-// Labeled accordingly rather than overclaiming.
 // ============================================================================
 class SalesTrendChart extends StatelessWidget {
   final List<double> actualTotals;
@@ -192,12 +187,6 @@ class _LegendItem extends StatelessWidget {
 
 // ============================================================================
 // CHART 2 — Historical vs Projected Sales by Brand
-//
-// Was a fabricated Jul/Aug/Sep-2024 monthly breakdown before. This app's
-// forecast data (see Add Forecast dialog) only tracks two real figures
-// per brand — historical (last 6 months) and projected (next 3 months) —
-// so that's what's charted, honestly, instead of inventing a monthly
-// split the data doesn't actually have.
 // ============================================================================
 class ForecastedDemandChart extends StatelessWidget {
   final List<BrandForecast> forecasts;
