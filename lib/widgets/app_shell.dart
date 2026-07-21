@@ -6,13 +6,6 @@ import '../theme/app_colors.dart';
 import 'app_sidebar.dart';
 import 'top_bar.dart';
 
-/// Common page chrome shared by every screen: the navy sidebar (permanent
-/// rail on wide screens, a Drawer on narrow ones) plus the fixed top bar.
-///
-/// Each screen just supplies its own scrollable [body] and tells the shell
-/// which sidebar item is currently active via [selectedIndex]. Tapping a
-/// different sidebar item navigates to that screen's named route — see
-/// AppRoutes.
 class AppShell extends StatefulWidget {
   final int selectedIndex;
   final Widget body;
@@ -25,8 +18,6 @@ class AppShell extends StatefulWidget {
     this.initiallyShowSidebar = true,
   });
 
-  /// Sidebar items, in display order. Index N here corresponds to
-  /// AppRoutes.sidebarOrder[N].
   static const List<NavItemData> navItems = [
     NavItemData(Icons.dashboard, 'Dashboard'),
     NavItemData(Icons.store, 'Consignment Management'),
