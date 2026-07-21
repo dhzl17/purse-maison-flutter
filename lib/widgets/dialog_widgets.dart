@@ -2,13 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
-/// Shared building blocks for every add/edit form dialog in the app
-/// (Inventory, Consignment, Client Inquiry, Sales Associate). Keeps every
-/// form's look-and-feel identical without duplicating the same styling in
-/// four different files.
 
-/// Wraps [child] in a centered, fixed-width modal with a title bar and a
-/// close (X) button — the shell every entity dialog is built inside.
 Future<T?> showFormDialog<T>({
   required BuildContext context,
   required String title,
@@ -61,7 +55,6 @@ Future<T?> showFormDialog<T>({
   );
 }
 
-/// A labeled text field with consistent spacing/validation styling.
 class DialogTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
@@ -115,7 +108,6 @@ class DialogTextField extends StatelessWidget {
   }
 }
 
-/// A labeled dropdown for enum-like fields.
 class DialogDropdown<T> extends StatelessWidget {
   final String label;
   final T value;
@@ -173,8 +165,6 @@ class DialogDropdown<T> extends StatelessWidget {
   }
 }
 
-/// Cancel + primary action button row, with a loading spinner swapped in
-/// for the primary button while [isSaving] is true.
 class DialogActions extends StatelessWidget {
   final String primaryLabel;
   final bool isSaving;
