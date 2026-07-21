@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart' show Timestamp;
 
-/// Backed by Firestore collection `salesTransactions/{id}`.
 class SalesTransaction {
   final String id;
   final String itemLabel;
