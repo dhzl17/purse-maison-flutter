@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
-/// Breakpoints shared by the landing page's responsive layout switches.
 class LandingBreakpoints {
   LandingBreakpoints._();
 
@@ -16,8 +15,6 @@ class LandingNavBar extends StatelessWidget {
   final VoidCallback onLoginTap;
   final VoidCallback? onHomeTap;
 
-  /// Which nav label is underlined/bold as the active tab. Defaults to
-  /// 'HOME' for the landing page; the login page passes 'LOG IN'.
   final String activeLabel;
 
   const LandingNavBar({
