@@ -4,10 +4,6 @@ import '../models/consignment_item.dart';
 import '../services/app_repositories.dart';
 import 'dialog_widgets.dart';
 
-/// Opens the Add/Edit Consignment Item dialog. Pass [existing] to edit a
-/// row in place, or leave it null to add a new one. [nextItemId] (add mode
-/// only) should be the next sequential item id, computed by the caller
-/// from the current list.
 Future<void> showConsignmentItemDialog(
   BuildContext context, {
   ConsignmentItem? existing,
