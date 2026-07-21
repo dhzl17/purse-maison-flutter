@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Hamburger (mobile only) + "Main" section label + notification/info/
-/// profile icon buttons. Identical on every screen — owned by AppShell.
 class TopBar extends StatelessWidget {
   final bool showMenuButton;
   final VoidCallback onMenuTap;
