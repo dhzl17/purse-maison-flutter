@@ -1,14 +1,11 @@
-/// Direction of a brand's projected demand.
+
 enum DemandTrend { increasing, decreasing, stable }
 
-/// A row in the brand forecast table.
-///
-/// Backed by Firestore collection `salesForecasts/{brand}`.
 class BrandForecast {
   final String brand;
-  final String historicalSales; // formatted, e.g. "4,850,000"
-  final String projectedSales; // formatted, e.g. "5,420,000"
-  final double projectedGrowthPercent; // signed, e.g. 11.8 or -15.6
+  final String historicalSales; 
+  final String projectedSales; 
+  final double projectedGrowthPercent; 
   final DemandTrend trend;
 
   const BrandForecast({
