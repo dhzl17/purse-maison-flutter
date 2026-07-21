@@ -92,21 +92,13 @@ class _LogoutConfirmationCard extends StatelessWidget {
   }
 }
 
-/// Clears the session and sends the user back to Login, wiping the
-/// navigation stack so Back can't return into the authenticated app.
 void performLogout(BuildContext context) {
-  // Fire-and-forget: sign-out completing triggers AppSession's
-  // authStateChanges listener, which is what actually clears the role.
-  // We navigate immediately either way for a snappy log-out feel.
   AppSession.instance.logout();
   Navigator.of(
     context,
   ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
 }
 
-/// Quick confirmation shown as a dialog — used by the sidebar's "Log Out"
-/// footer tile so the user doesn't lose their place navigating to a new
-/// route just to confirm.
 Future<void> showLogoutDialog(BuildContext context) {
   return showDialog(
     context: context,
