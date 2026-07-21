@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import 'common_widgets.dart';
 
-// ============================================================================
-// QUICK ACTIONS — two full-width navy buttons.
-// (Recent Assignment Activity now uses the generic ActivityFeedCard from
-// common_widgets.dart directly — see client_assignment_page.dart.)
-// ============================================================================
 class QuickActionsCard extends StatelessWidget {
   final VoidCallback? onAddWalkInClient;
   final VoidCallback? onAddOnlineInquiry;
