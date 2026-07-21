@@ -7,19 +7,7 @@ import 'package:flutter/foundation.dart';
 import '../models/user_role.dart';
 import 'firestore_paths.dart';
 
-/// Tracks who's currently logged in, backed by real Firebase Authentication
-/// + a `users/{uid}` Firestore doc that stores the account's role.
-///
-/// A single app-wide instance (AppSession.instance) so RouteGuard, the
-/// sidebar, and any page can all check the current role without threading
-/// it through constructors — same shape as before, just backed by Firebase
-/// instead of MockAccounts.
-///
-/// Login screens use usernames, not emails, so each username is mapped to
-/// a synthetic email of the form `<username>@pursemaison.app` for Firebase
-/// Auth's email/password sign-in. The Firestore `users/{uid}` doc stores
-/// the real username + role so the rest of the app never has to know
-/// about the synthetic email.
+
 class AppSession extends ChangeNotifier {
   AppSession._internal() {
     _authSub = FirebaseAuth.instance.authStateChanges().listen(_onAuthChanged);
@@ -40,11 +28,6 @@ class AppSession extends ChangeNotifier {
   String? get username => _username;
   bool get isLoggedIn => _currentRole != null;
 
-  /// True until the very first auth-state event (app cold start) has been
-  /// resolved, including fetching the role doc if someone's already
-  /// signed in. RouteGuard shows a loading spinner instead of redirecting
-  /// to /login while this is true, so a returning logged-in user doesn't
-  /// flash the login page.
   bool get isInitializing => _isInitializing;
 
   Future<void> _onAuthChanged(User? user) async {
@@ -64,8 +47,6 @@ class AppSession extends ChangeNotifier {
 
       final data = doc.data();
       if (data == null) {
-        // Signed in with Firebase Auth but has no role doc — treat as
-        // logged out rather than letting them into the app with no role.
         _currentRole = null;
         _username = null;
       } else {
@@ -81,9 +62,6 @@ class AppSession extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Signs in with [username]/[password] against Firebase Auth. Returns
-  /// null on success (session updates via the authStateChanges listener
-  /// above), or a human-readable error message on failure.
   Future<String?> authenticate(String username, String password) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
