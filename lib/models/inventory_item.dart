@@ -1,13 +1,8 @@
-/// Stock status for an inventory item.
+
 enum InventoryStatus { available, reserved, rejected, sold }
 
-/// Transaction state tied to an inventory item, if any.
 enum TransactionStatus { none, pending, cancelled, completed }
 
-/// A single row of data for the Inventory Management table.
-///
-/// Backed by Firestore collection `inventory/{itemId}` — see
-/// FirestoreCollections.inventory in services/firestore_paths.dart.
 class InventoryItem {
   final String itemId;
   final String brand;
