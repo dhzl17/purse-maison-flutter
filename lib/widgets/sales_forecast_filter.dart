@@ -89,12 +89,6 @@ class _FilterAndSearchCardState extends State<FilterAndSearchCard> {
               );
 
               if (isWide) {
-                // Wrap (instead of Row + Spacer) so that if the button
-                // doesn't have room on the same line as the dropdowns —
-                // e.g. right around the 800px breakpoint — it flows onto
-                // its own line below rather than overflowing off the
-                // right edge. Row + Spacer only guaranteed room for the
-                // fixed-width dropdowns, not for the button itself.
                 return Wrap(
                   alignment: WrapAlignment.spaceBetween,
                   runSpacing: 14,
