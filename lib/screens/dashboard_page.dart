@@ -12,7 +12,6 @@ import '../widgets/app_shell.dart';
 import '../widgets/common_widgets.dart';
 import '../widgets/dashboard_charts.dart';
 
-/// The Dashboard screen (sidebar index 0). Greeting, KPI cards, and charts.
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
@@ -25,8 +24,6 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
-/// Everything the KPI cards and charts need, computed once per rebuild
-/// from the raw Firestore streams.
 class _DashboardStats {
   final int itemsSold;
   final int activeConsignedItems;
