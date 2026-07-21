@@ -174,8 +174,6 @@ class PeriodChip extends StatelessWidget {
   }
 }
 
-/// The "Sort by: `value` ⌄" row shown above data tables. Shared by every
-/// page that lists table data (Consignment Management, Inventory Management, ...).
 class SortByRow extends StatelessWidget {
   final String value;
   const SortByRow({super.key, required this.value});
@@ -209,10 +207,7 @@ class SortByRow extends StatelessWidget {
 }
 
 // ============================================================================
-// STATUS BADGE — small pill used in the Consignment Management table for
-// Authentication ("Verified" / "Rejected") and Payout Status
-// ("Not Yet Sold" / "Sold" / "Cancelled"). Generic enough to reuse on any
-// future page that shows a status pill.
+// STATUS BADGE 
 // ============================================================================
 enum StatusBadgeTone { success, danger, warning, info }
 
@@ -253,8 +248,7 @@ class StatusBadge extends StatelessWidget {
 }
 
 // ============================================================================
-// VIEW ALL LINK — muted text link used under table cards and in card
-// headers (e.g. "Recent Assignment Activity").
+// VIEW ALL LINK 
 // ============================================================================
 class ViewAllLink extends StatelessWidget {
   final VoidCallback? onTap;
@@ -280,11 +274,6 @@ class ViewAllLink extends StatelessWidget {
   }
 }
 
-// ============================================================================
-// NAVY ACTION BUTTON — full-width filled navy button (e.g. "Quick Actions"
-// on the Client Assignment page). Reusable anywhere a primary action button
-// is needed.
-// ============================================================================
 class NavyActionButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
@@ -391,9 +380,7 @@ class LabeledDropdown extends StatelessWidget {
 }
 
 // ============================================================================
-// ACTIVITY FEED CARD — generic "title + list of description/date rows"
-// panel. Covers Client Assignment's "Recent Assignment Activity" and Sales
-// Forecasting's "Prediction Alerts" — same shape, different data.
+// ACTIVITY FEED CARD 
 // ============================================================================
 class FeedEntry {
   final String description;
