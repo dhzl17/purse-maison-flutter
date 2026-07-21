@@ -34,9 +34,6 @@ const TextStyle _bodyStyleBold = TextStyle(
 );
 const TextStyle _mutedStyle = TextStyle(fontSize: 13, color: AppColors.textMuted);
 
-/// The Inventory Management data table. Same responsive pattern as
-/// ConsignmentTable: fills available width on wide screens, falls back to
-/// horizontal scrolling on narrow ones.
 class InventoryTable extends StatelessWidget {
   final List<InventoryItem> items;
   final void Function(InventoryItem item)? onEdit;
