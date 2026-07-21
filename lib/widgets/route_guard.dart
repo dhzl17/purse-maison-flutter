@@ -5,10 +5,6 @@ import '../routes/app_routes.dart';
 import '../services/app_session.dart';
 import '../theme/app_colors.dart';
 
-/// Wraps a protected page. If nobody is logged in, redirects to /login.
-/// If someone is logged in but their role isn't allowed on this route,
-/// shows an "Access Denied" screen instead of the real page.
-
 class RouteGuard extends StatelessWidget {
   final String routeName;
   final Widget child;
