@@ -70,9 +70,6 @@ class SalesForecastingPage extends StatelessWidget {
                   final months = lastNMonths(6);
                   final monthLabels = [for (final m in months) m.label];
                   final actualTotals = monthlySalesTotals(transactions, months);
-                  // Naive projection: flat average of the last 3 real
-                  // months. See the doc comment on SalesTrendChart for why
-                  // this doesn't claim to be a trained forecast.
                   final lastThree = actualTotals.length >= 3
                       ? actualTotals.sublist(actualTotals.length - 3)
                       : actualTotals;
