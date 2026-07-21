@@ -238,9 +238,6 @@ class _LoginPageState extends State<LoginPage>
   }
 }
 
-/// Outlined text field whose border animates to the primary blue when
-/// focused (AnimatedContainer per the spec), instead of the default
-/// abrupt Material focus outline.
 class _AnimatedLoginField extends StatefulWidget {
   final TextEditingController controller;
   final String hint;
@@ -315,9 +312,6 @@ class _AnimatedLoginFieldState extends State<_AnimatedLoginField> {
   }
 }
 
-/// The login submit button. Wrapped in a MouseRegion so desktop/web users
-/// get a subtle scale-up on hover, in addition to the Material ripple that
-/// ElevatedButton already provides on press.
 class _HoverScaleButton extends StatefulWidget {
   final VoidCallback onPressed;
   final bool isLoading;
