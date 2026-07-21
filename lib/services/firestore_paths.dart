@@ -1,5 +1,3 @@
-/// Central place for every Firestore collection name used by the app.
-/// Keep this in sync with `firestore.rules`.
 class FirestoreCollections {
   FirestoreCollections._();
 
