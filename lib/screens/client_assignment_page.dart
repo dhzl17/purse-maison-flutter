@@ -10,7 +10,6 @@ import '../widgets/client_assignment_tables.dart';
 import '../widgets/common_widgets.dart';
 import '../widgets/dialog_widgets.dart';
 
-/// The Client Assignment screen (sidebar index 3).
 class ClientAssignmentPage extends StatelessWidget {
   const ClientAssignmentPage({super.key});
 
@@ -89,9 +88,6 @@ class ClientAssignmentPage extends StatelessWidget {
                   return LayoutBuilder(
                     builder: (context, constraints) {
                       final bool isWide = constraints.maxWidth >= 1000;
-                      // Both tables need enough room for their headers and
-                      // status badges. Stack them before the narrower
-                      // sales-associate table is squeezed.
                       final bool canShowTablesSideBySide =
                           constraints.maxWidth >= 1280;
 
