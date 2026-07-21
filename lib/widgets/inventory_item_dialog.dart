@@ -5,11 +5,6 @@ import '../models/sales_transaction.dart';
 import '../services/app_repositories.dart';
 import 'dialog_widgets.dart';
 
-/// Opens the Add/Edit Inventory Item dialog. Pass [existing] to edit a row
-/// in place, or leave it null to add a new one. [nextItemId] is only used
-/// in add mode — pass the next "INV-0XX" id to pre-fill (computed by the
-/// caller from the current list, since it needs to see every item, not
-/// just this dialog's state).
 Future<void> showInventoryItemDialog(
   BuildContext context, {
   InventoryItem? existing,
@@ -123,7 +118,6 @@ class _InventoryItemFormState extends State<_InventoryItemForm> {
 
   /// Strips currency symbols/commas from a price string like "₱720,000"
   /// down to a plain number. Falls back to 0 if nothing parseable is found
-  /// (better to log a $0 sale visibly than silently skip the KPI update).
   double _parsePriceToAmount(String price) {
     final digitsOnly = price.replaceAll(RegExp(r'[^0-9.]'), '');
     return double.tryParse(digitsOnly) ?? 0;
