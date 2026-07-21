@@ -1,12 +1,4 @@
 /// Named routes for every screen in the app.
-///
-/// [sidebarOrder] must stay in the same order as the sidebar's nav items
-/// (see AppShell.navItems) — index N in the sidebar navigates to
-/// sidebarOrder[N]. Note that [landing] is intentionally excluded from
-/// [sidebarOrder]: it's the pre-login marketing screen shown before the
-/// user enters the dashboard shell, not one of the sidebar destinations.
-/// [help] and [logout] are likewise excluded — they're reached from the
-/// sidebar's footer tiles, not its main nav list.
 class AppRoutes {
   AppRoutes._();
 
