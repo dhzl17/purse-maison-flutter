@@ -1,0 +1,94 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- helpers ------------------------------------------------------
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function myRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isSuperAdmin() {
+      return isSignedIn() && myRole() == 'superAdmin';
+    }
+
+    function isOperationalStaff() {
+      return isSignedIn() && myRole() == 'operationalStaff';
+    }
+
+    function isSalesAssociate() {
+      return isSignedIn() && myRole() == 'salesAssociate';
+    }
+
+    // ---- users ----------------------------------------------------------
+    // Everyone can read their own role doc (needed right after login,
+    // before we know their role). Only Super Admin can create/edit
+    // accounts — do that from the Firebase Console or the seed script,
+    // not from the app itself.
+    match /users/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || isSuperAdmin());
+      allow write: if isSuperAdmin();
+    }
+
+    // ---- inventory --------------------------------------------------
+    // Every signed-in role can view inventory (Sales Associates see it
+    // read-only per UserRole.inventoryIsViewOnly in the app). Only Super
+    // Admin and Operational Staff can add/edit/delete items.
+    match /inventory/{itemId} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin() || isOperationalStaff();
+    }
+
+    // ---- consignments -------------------------------------------------
+    // Consignment Management editing isn't in Sales Associates'
+    // allowedRoutes, so only Super Admin / Operational Staff can add,
+    // edit, or delete consignments — but read access is open to every
+    // signed-in role since the Dashboard's "Active Consigned Items" card
+    // needs a count of these regardless of role.
+    match /consignments/{itemId} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin() || isOperationalStaff();
+    }
+
+    // ---- client assignment --------------------------------------------
+    // Client Assignment isn't in Operational Staff's allowedRoutes, so
+    // only Super Admin / Sales Associate can edit it — but read access is
+    // open to every signed-in role since the Dashboard's "Total Item
+    // Inquiries" card needs a count of these regardless of role.
+    match /clientInquiries/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin() || isSalesAssociate();
+    }
+    match /salesAssociates/{id} {
+      allow read, write: if isSuperAdmin() || isSalesAssociate();
+    }
+    match /assignmentActivity/{id} {
+      allow read, write: if isSuperAdmin() || isSalesAssociate();
+    }
+
+    // ---- sales forecasting ----------------------------------------------
+    // Everyone can view forecasts (Sales Associates in view-only mode per
+    // UserRole.salesForecastingIsViewOnly). Only Super Admin edits them
+    // (Operational Staff has no forecasting route at all).
+    match /salesForecasts/{brand} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin();
+    }
+    match /predictionAlerts/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin();
+    }
+
+    // ---- sales transactions --------------------------------------------
+    // Logged automatically when an inventory item is marked Sold. Same
+    // access as inventory itself.
+    match /salesTransactions/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSuperAdmin() || isOperationalStaff();
+    }
+  }
+}

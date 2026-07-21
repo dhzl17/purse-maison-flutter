@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "365881480617",
+    "project_id": "purse-maison-5127b",
+    "storage_bucket": "purse-maison-5127b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365881480617:android:10ecd87c3372599e9da0b8",
+        "android_client_info": {
+          "package_name": "com.example.purse_maison"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBckv6vYkG79fA81Bl7F4KbvSZL9XzCsvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

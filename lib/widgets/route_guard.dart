@@ -1,0 +1,129 @@
+import 'package:flutter/material.dart';
+
+import '../models/user_role.dart';
+import '../routes/app_routes.dart';
+import '../services/app_session.dart';
+import '../theme/app_colors.dart';
+
+/// Wraps a protected page. If nobody is logged in, redirects to /login.
+/// If someone is logged in but their role isn't allowed on this route,
+/// shows an "Access Denied" screen instead of the real page.
+///
+/// Usage in main.dart:
+///   AppRoutes.consignmentManagement: (context) => const RouteGuard(
+///         routeName: AppRoutes.consignmentManagement,
+///         child: ConsignmentManagementPage(),
+///       ),
+class RouteGuard extends StatelessWidget {
+  final String routeName;
+  final Widget child;
+
+  const RouteGuard({super.key, required this.routeName, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    // Listens to AppSession so this rebuilds the moment Firebase resolves
+    // the persisted auth state (cold start) or the user signs out from
+    // elsewhere in the app — not just right after a fresh login navigation.
+    return AnimatedBuilder(
+      animation: AppSession.instance,
+      builder: (context, _) {
+        final session = AppSession.instance;
+
+        if (session.isInitializing) {
+          // Still resolving Firebase's persisted auth state on cold start —
+          // don't redirect yet, or a returning logged-in user briefly
+          // flashes the login page.
+          return const _RedirectingScaffold();
+        }
+
+        if (!session.isLoggedIn) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
+          });
+          return const _RedirectingScaffold();
+        }
+
+        final role = session.currentRole!;
+        if (!role.canAccess(routeName)) {
+          return _AccessDeniedScaffold(roleLabel: role.label);
+        }
+
+        return child;
+      },
+    );
+  }
+}
+
+class _RedirectingScaffold extends StatelessWidget {
+  const _RedirectingScaffold();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: AppColors.pageBackground,
+      body: Center(
+        child: CircularProgressIndicator(color: AppColors.sidebarBg),
+      ),
+    );
+  }
+}
+
+class _AccessDeniedScaffold extends StatelessWidget {
+  final String roleLabel;
+
+  const _AccessDeniedScaffold({required this.roleLabel});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.pageBackground,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.lock_outline,
+              size: 48,
+              color: AppColors.textMuted,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              "You don't have access to this page",
+              style: TextStyle(
+                color: AppColors.textDark,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              'Signed in as $roleLabel',
+              style: const TextStyle(color: AppColors.textMuted, fontSize: 13),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil(AppRoutes.dashboard, (route) => false),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.sidebarBg,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: const Text('Back to Dashboard'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

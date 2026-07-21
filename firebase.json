@@ -1,0 +1,29 @@
+﻿{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "purse-maison-5127b",
+          "appId": "1:365881480617:android:10ecd87c3372599e9da0b8",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "purse-maison-5127b",
+          "configurations": {
+            "android": "1:365881480617:android:10ecd87c3372599e9da0b8",
+            "ios": "1:365881480617:ios:dc3ba2923c54267c9da0b8",
+            "macos": "1:365881480617:ios:dc3ba2923c54267c9da0b8",
+            "web": "1:365881480617:web:c51b1ec5a684cb499da0b8",
+            "windows": "1:365881480617:web:490a8d15f473e0ac9da0b8"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
