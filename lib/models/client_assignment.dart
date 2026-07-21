@@ -1,17 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart' show FieldValue;
 
-/// Status of a client inquiry as it moves through the pipeline.
 enum InquiryStatus { newInquiry, closed, followedUp, reserved }
 
-/// Outcome of a client inquiry, if any transaction has happened yet.
 enum TransactionResult { none, noPurchase, purchased }
 
-/// Availability of a sales associate.
 enum AssociateStatus { assigned, available }
 
-/// A row in the client inquiries table.
-///
-/// Backed by Firestore collection `clientInquiries/{id}`.
 class ClientInquiry {
   final String id;
   final int no;
@@ -63,9 +57,6 @@ class ClientInquiry {
   }
 }
 
-/// A row in the sales associate assignment table.
-///
-/// Backed by Firestore collection `salesAssociates/{id}`.
 class SalesAssociateAssignment {
   final String id;
   final String associateName;
@@ -99,9 +90,6 @@ class SalesAssociateAssignment {
   }
 }
 
-/// An entry in an activity feed (recent assignment activity, prediction
-/// alerts, etc). Backed by Firestore collections `assignmentActivity` and
-/// `predictionAlerts`.
 class FeedEntryRecord {
   final String id;
   final String description;
@@ -125,8 +113,6 @@ class FeedEntryRecord {
     return {
       'description': description,
       'timestamp': timestamp,
-      // Real ordering key — 'timestamp' above is just the display string,
-      // same as the original mock data (e.g. "Yesterday, 1:18 PM").
       'createdAt': FieldValue.serverTimestamp(),
     };
   }
