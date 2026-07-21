@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  AppColors._(); // namespace only, never instantiated
+  AppColors._(); 
 
   static const Color sidebarBg = Color(0xFF0B1252);
   static const Color cardNavyDark = Color(0xFF0A1252);
