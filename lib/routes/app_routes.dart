@@ -1,4 +1,3 @@
-/// Named routes for every screen in the app.
 class AppRoutes {
   AppRoutes._();
 
