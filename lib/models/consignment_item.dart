@@ -1,12 +1,8 @@
-/// Authentication outcome for a consigned item.
+
 enum AuthenticationStatus { verified, rejected }
 
-/// Payout state for a consigned item.
 enum PayoutStatus { notYetSold, sold, cancelled }
 
-/// A single row of data for the Consignment Management table.
-///
-/// Backed by Firestore collection `consignments/{itemId}`.
 class ConsignmentItem {
   final String itemId;
   final String brand;
