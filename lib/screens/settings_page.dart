@@ -68,9 +68,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
     setState(() => _isUpdatingPassword = true);
     try {
-      // Firebase requires a recent sign-in before a sensitive change like
-      // a password update, so we reauthenticate with the current password
-      // first.
       final credential = EmailAuthProvider.credential(
         email: user.email!,
         password: _currentPasswordController.text,
