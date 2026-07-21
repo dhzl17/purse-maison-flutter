@@ -5,9 +5,6 @@ import '../theme/app_colors.dart';
 import 'common_widgets.dart';
 import 'dialog_widgets.dart';
 
-// Fixed column widths. "Category" grows to fill remaining space when the
-// table is wide enough; below _minTableWidth the whole table scrolls
-// horizontally instead of squeezing cells unreadably thin.
 const double _colItemId = 90;
 const double _colBrand = 130;
 const double _colCategoryMin = 120;
