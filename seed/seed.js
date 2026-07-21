@@ -141,11 +141,6 @@ const PREDICTION_ALERTS = [
   { id: 'pa-4', description: 'Gucci wallets show steady growth. Maintain current inventory level.', timestamp: 'Apr 28, 2024' },
 ];
 
-// A handful of sample sales, spread across "this month" and "last month"
-// relative to whenever this script runs, so the Dashboard's Total Sales /
-// Monthly Sales Growth cards have real numbers to show on first run
-// instead of sitting at 0. In normal use these get created automatically
-// whenever an inventory item is marked Sold (see inventory_item_dialog.dart).
 function buildSalesTransactions() {
   const now = new Date();
   const thisMonth = (day, amount, label, itemId) => ({
@@ -164,13 +159,6 @@ function buildSalesTransactions() {
   });
 
   return [
-    // Linked to INV-005 (Gucci Marmont, already seeded with status
-    // "sold" in INVENTORY_BASE below) so the Dashboard's Average Display
-    // Duration / Fast-Moving-Items cards have at least one real data
-    // point on first run. The rest are left unlinked (itemId: null) —
-    // either they reference consignment ids (not inventory) or an
-    // inventory item whose current seeded status isn't "sold", and
-    // forcing a link there would make the demo data self-contradictory.
     thisMonth(2, 110000, 'Gucci Marmont Matelasse (INV-005)', 'INV-005'),
     thisMonth(9, 98000, 'Celine Triomphe Canvas (1109)'),
     thisMonth(15, 240000, 'Dior Saddle Bag Oblique (INV-006)'),
