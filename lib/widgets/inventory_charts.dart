@@ -5,12 +5,9 @@ import '../theme/app_colors.dart';
 import 'common_widgets.dart';
 
 // ============================================================================
-// PANEL 1 — Inventory by Location (horizontal bar chart, live counts)
+// PANEL 1
 // ============================================================================
 class InventoryByLocationChart extends StatelessWidget {
-  /// Item count per location, in whatever order the caller wants shown —
-  /// built from whatever distinct `location` values actually exist in
-  /// inventory right now, not a fixed hardcoded list.
   final List<MapEntry<String, int>> counts;
 
   const InventoryByLocationChart({super.key, required this.counts});
@@ -20,7 +17,6 @@ class InventoryByLocationChart extends StatelessWidget {
     final int maxValue = counts.isEmpty
         ? 0
         : counts.map((e) => e.value).reduce((a, b) => a > b ? a : b);
-    // Round up to a clean axis ceiling above the tallest bar.
     final double axisMax = maxValue <= 0 ? 10 : (maxValue * 1.25);
     final List<int> axisTicks = [
       0,
@@ -270,7 +266,6 @@ class TurnoverLeaderboardCard extends StatelessWidget {
   }
 }
 
-/// One row of sales history: how long an item sat before it sold.
 class TurnoverEntry {
   final String name;
   final int days;
