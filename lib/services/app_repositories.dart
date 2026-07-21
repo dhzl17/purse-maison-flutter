@@ -6,9 +6,6 @@ import '../models/sales_transaction.dart';
 import 'firestore_paths.dart';
 import 'firestore_repository.dart';
 
-/// One repository instance per collection, shared app-wide. Screens read
-/// from these via `.watchAll()` (a live Stream<List<T>>) instead of the
-/// old hardcoded static lists.
 class AppRepositories {
   AppRepositories._();
 
