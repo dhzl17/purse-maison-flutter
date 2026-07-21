@@ -1,11 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Small generic wrapper around a Firestore collection that turns snapshots
-/// into typed model lists and gives every screen the same
-/// watchAll / add / update / delete shape.
-///
-/// [fromMap] takes the document id + its data and builds a model.
-/// [toMap] takes a model and returns the fields to write.
 class FirestoreRepository<T> {
   FirestoreRepository({
     required String collectionPath,
@@ -19,7 +13,6 @@ class FirestoreRepository<T> {
   final Map<String, dynamic> Function(T item) toMap;
   final String? orderBy;
 
-  /// Live stream of every document in the collection, mapped to [T].
   Stream<List<T>> watchAll() {
     Query<Map<String, dynamic>> query = _collection;
     if (orderBy != null) query = query.orderBy(orderBy!);
