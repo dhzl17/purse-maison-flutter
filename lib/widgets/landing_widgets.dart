@@ -10,8 +10,6 @@ class LandingBreakpoints {
   static const double tablet = 1024;
 }
 
-/// Top navigation row: logo on the left, nav links on the right (desktop /
-/// tablet), collapsing into a hamburger + bottom sheet on mobile.
 class LandingNavBar extends StatelessWidget {
   final bool isMobile;
   final double horizontalPadding;
@@ -191,18 +189,6 @@ class _NavItem extends StatelessWidget {
   }
 }
 
-/// Logo image, sized to match the footprint of the original drawn
-/// icon+wordmark (48px icon + text stacked below it, ~64px tall).
-///
-/// Drop your logo file at `assets/images/LOGO_PURSE_MAISON-removebg-preview.png` (or pass a different
-/// `assetPath`) and register it in pubspec.yaml:
-///
-///   flutter:
-///     assets:
-///       - assets/images/LOGO_PURSE_MAISON-removebg-preview.png
-///
-/// Until the file exists, this shows a dashed placeholder box at the same
-/// size so the layout doesn't shift once you add the real image.
 class LandingLogo extends StatelessWidget {
   final String assetPath;
   final double width;
@@ -279,11 +265,9 @@ class _LogoPlaceholder extends StatelessWidget {
   }
 }
 
-/// Right-hand full-bleed panel: dark navy background with layered glowing
-/// arcs, built from AppColors' existing chart-blue tones (no new colors).
+
 class LandingGraphicPanel extends StatelessWidget {
-  /// Optional content layered on top of the glow-arc background, e.g. the
-  /// "Welcome Back!" text on the login page.
+
   final Widget? overlay;
 
   const LandingGraphicPanel({super.key, this.overlay});
@@ -353,7 +337,6 @@ class _GlowArcsPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
-/// Very faint diagonal stripe pattern behind the left content column.
 class LandingDiagonalStripes extends StatelessWidget {
   const LandingDiagonalStripes({super.key});
 
