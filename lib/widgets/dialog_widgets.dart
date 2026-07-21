@@ -249,8 +249,6 @@ class RowActionButtons extends StatelessWidget {
   }
 }
 
-/// Standard "Are you sure?" confirmation before a delete call. Returns
-/// true only if the user tapped the destructive confirm button.
 Future<bool> confirmDelete({
   required BuildContext context,
   required String itemLabel,
@@ -280,15 +278,12 @@ Future<bool> confirmDelete({
   return result ?? false;
 }
 
-/// Shows a plain error SnackBar — used when a repository add/update/delete
-/// call throws.
 void showErrorSnackBar(BuildContext context, Object error) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(content: Text('Something went wrong: $error')),
   );
 }
 
-/// A full-width outlined "+ Add ..." button used above tables.
 class AddEntityButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
