@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Centralised color palette for the whole app. Every screen and widget
-/// pulls its colors from here so the design stays consistent as new pages
-/// are added.
 class AppColors {
   AppColors._(); // namespace only, never instantiated
 
@@ -10,8 +7,6 @@ class AppColors {
   static const Color cardNavyDark = Color(0xFF0A1252);
   static const Color cardNavyLight = Color(0xFF1B2478);
   static const Color pageBackground = Color(0xFFF5F3EE);
-  // The soft off-white "panel" that frames every page's content, sitting
-  // between the cream page background and the pure-white cards inside it.
   static const Color panelBackground = Color(0xFFFCFBF8);
   static const Color gold = Color(0xFFC9A24A);
   static const Color textDark = Color(0xFF1A1A2E);
