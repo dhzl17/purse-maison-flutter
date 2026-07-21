@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 
 // ============================================================================
-// STAT CARD — reusable dark-navy KPI tile (Dashboard headline + secondary
-// metric rows).
+// STAT CARD 
 // ============================================================================
 class StatCard extends StatelessWidget {
   final String title;
@@ -107,8 +106,7 @@ class StatCard extends StatelessWidget {
 }
 
 // ============================================================================
-// CHART CARD — plain white rounded card shell. Used by the dashboard charts
-// and reused as the outer panel on the Consignment Management page.
+// CHART CARD 
 // ============================================================================
 class ChartCard extends StatelessWidget {
   final Widget child;
@@ -142,7 +140,6 @@ class ChartCard extends StatelessWidget {
   }
 }
 
-/// A small "5 Years ⌄" style filter chip shown above some dashboard charts.
 class PeriodChip extends StatelessWidget {
   final String label;
   const PeriodChip({super.key, required this.label});
@@ -308,8 +305,7 @@ class NavyActionButton extends StatelessWidget {
 }
 
 // ============================================================================
-// LABELED DROPDOWN — a small label above a bordered dropdown box. Used by
-// the Sales Forecasting page's "Filter and Search" card.
+// LABELED DROPDOWN
 // ============================================================================
 class LabeledDropdown extends StatelessWidget {
   final String label;
@@ -463,8 +459,7 @@ class _FeedRow extends StatelessWidget {
 }
 
 // ============================================================================
-// TABLE CARD — wraps a table (or any content) in the shared white card
-// shell with a centered "View All" link beneath it.
+// TABLE CARD 
 // ============================================================================
 class TableCard extends StatelessWidget {
   final Widget child;
