@@ -191,7 +191,6 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
     List<InventoryItem> items,
     List<SalesTransaction> transactions,
   ) {
-    // Location breakdown, in descending count order.
     final Map<String, int> byLocation = {};
     for (final item in items) {
       byLocation[item.location] = (byLocation[item.location] ?? 0) + 1;
@@ -199,9 +198,6 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
     final locationCounts = byLocation.entries.toList()
       ..sort((a, b) => b.value.compareTo(a.value));
 
-    // Turnover proxy per month: items sold that month ÷ current total
-    // inventory. Same simplified definition as the KPI card of the same
-    // name — see the class doc comment in inventory_charts.dart.
     final months = lastNMonths(6);
     final monthLabels = [for (final m in months) m.label];
     final soldCounts = monthlySoldCounts(transactions, months);
@@ -210,8 +206,6 @@ class _InventoryManagementPageState extends State<InventoryManagementPage> {
         items.isEmpty ? 0.0 : (count / items.length) * 100,
     ];
 
-    // Slowest-moving items: sales we can trace back to an inventory doc,
-    // sorted by longest time-to-sell, same linkage the Dashboard uses.
     final inventoryById = {for (final item in items) item.itemId: item};
     final leaderboardEntries = <TurnoverEntry>[];
     for (final t in transactions) {
